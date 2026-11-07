@@ -1,0 +1,18 @@
+schema_version: 1
+kind: run
+profile: paper
+name: joint_evaluation
+method: joint_dqn_ppo_ppo
+entrypoint: evaluate
+artifacts_root: artifacts
+args:
+  eval_source: joint_checkpoint
+  joint_checkpoint: null
+  output_dir: .
+  device: cpu
+  num_ground_stations: 4
+  num_gs_per_rb: 2
+  topology_profile: paper_n4
+  num_eval_seeds: 500
+  eval_seed_base: 10001
+  eval_seed_stride: 37

@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "atprl"
+version = "0.1.0"
+description = "ATP-RL and eight resource-allocation benchmarks"
+requires-python = ">=3.12.3,<3.13"
+dependencies = [
+  "numpy==1.26.4",
+  "scipy==1.14.1",
+  "torch==2.8.0",
+  "matplotlib==3.9.2",
+  "tqdm==4.66.5",
+  "tensorboard==2.20.0",
+  "PyYAML==6.0.2",
+  "threadpoolctl==3.6.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<9", "mpmath>=1.3,<2"]
+sdr = ["cvxpy==1.6.7", "scs==3.2.8"]
+
+[project.scripts]
+atprl = "atprl.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+
+[tool.setuptools.data-files]
+"share/atprl/configs" = ["configs/paper_main.yaml"]
+"share/atprl/configs/base" = ["configs/base/stage2.yaml", "configs/base/warmup.yaml"]
+"share/atprl/configs/evaluation" = ["configs/evaluation/atp_rl.yaml", "configs/evaluation/joint_rl.yaml", "configs/evaluation/no_ris.yaml", "configs/evaluation/paper_all.yaml", "configs/evaluation/periodic.yaml", "configs/evaluation/rnd_stp.yaml", "configs/evaluation/stp_rl.yaml", "configs/evaluation/stp_sac.yaml", "configs/evaluation/wmmse_stp.yaml"]
+"share/atprl/configs/methods" = ["configs/methods/atp_rl.yaml", "configs/methods/conventional.yaml", "configs/methods/joint_rl.yaml", "configs/methods/no_ris.yaml", "configs/methods/periodic.yaml", "configs/methods/rnd_stp.yaml", "configs/methods/stp_rl.yaml", "configs/methods/stp_sac.yaml", "configs/methods/wmmse_stp.yaml"]
+"share/atprl/configs/warmup" = ["configs/warmup/rnd_stp.yaml", "configs/warmup/stp_rl.yaml", "configs/warmup/wmmse_stp.yaml"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }

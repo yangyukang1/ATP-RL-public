@@ -1,0 +1,5 @@
+extends: ../base/warmup.yaml
+name: rnd_stp_warmup
+method: rnd_stp
+args:
+  scheduler_mode: random

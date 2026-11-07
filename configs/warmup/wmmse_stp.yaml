@@ -1,0 +1,5 @@
+extends: ../base/warmup.yaml
+name: wmmse_stp_warmup
+method: wmmse_stp
+args:
+  power_mode: wmmse

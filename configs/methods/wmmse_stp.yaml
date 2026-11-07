@@ -1,0 +1,6 @@
+extends: stp_rl.yaml
+name: wmmse_stp
+method: wmmse_stp
+args:
+  scheduler_mode: dqn
+  power_mode: wmmse

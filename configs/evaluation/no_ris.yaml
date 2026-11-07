@@ -1,0 +1,11 @@
+schema_version: 1
+kind: run
+profile: paper
+name: evaluate_no_ris
+method: no_ris
+entrypoint: no_ris_evaluate
+artifacts_root: artifacts
+args:
+  checkpoint: null
+  output_dir: .
+  num_eval_seeds: 500

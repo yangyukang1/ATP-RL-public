@@ -1,0 +1,61 @@
+schema_version: 1
+kind: run
+profile: paper
+name: paper_all_evaluation
+method: atp_rl
+entrypoint: evaluate
+artifacts_root: artifacts
+boolean_value_args:
+  - run_batch
+  - show_progress
+  - stream_write
+  - disable_ris_path
+  - phase2_power_deterministic_mean
+  - include_sr_incident_pow_groups
+  - include_mrt_features
+physics:
+  temporal_correlation: jakes
+  decision_interval_s: 0.04
+  micro_steps: 20
+  residual_doppler_hz: 50.0
+args:
+  run_batch: true
+  baseline_list:
+  - atp_rl
+  - stp_rl
+  - rnd_stp
+  - wmmse_stp
+  - periodic
+  atp_pbt_run_dir: null
+  stp_phase2_model_dir: null
+  rnd_stp_phase2_model_dir: null
+  wmmse_phase2_model_dir: null
+  periodic_phase1_model_dir_batch: null
+  output_dir: .
+  num_eval_seeds: 500
+  eval_seed_base: 10001
+  eval_seed_stride: 37
+  save_per_seed_metrics: true
+  csv_name: eval_summary.csv
+  show_progress: true
+  stream_write: true
+  stream_flush_every: 1
+  device: cpu
+  num_ground_stations: 4
+  num_gs_per_rb: 2
+  topology_profile: paper_n4
+  fairness_lambda: 3.0
+  fairness_beta: 0.05
+  csi_error_variance: 0.01
+  ris_reflection_power_limit_dBm: -5.0
+  sweep_ris_reflection_power_limit_dBm:
+  - -5.0
+  active_ris_noise_power_dBm: -100.0
+  uav_rx_antenna_gain_dBi: 15.0
+  ris_elem_max_amp_gain_dB: 40.0
+  sic_detection_threshold_dBm: -94.0
+  include_mrt_features: true
+  phase_state_mode: compact_selected
+  phase_compact_include_mrt_features: true
+  phase_policy_dist: gaussian_latent
+  learn_amp_weights: auto

@@ -1,0 +1,79 @@
+schema_version: 1
+kind: run
+profile: paper
+name: joint_rl
+method: joint_dqn_ppo_ppo
+entrypoint: joint
+artifacts_root: artifacts
+boolean_optional_args:
+- include_mrt_features
+- phase_compact_include_mrt_features
+replication:
+  training_seeds:
+  - 3
+  - 6
+  - 8
+  - 9
+  - 42
+  evaluation_seeds_per_model: 500
+physics:
+  temporal_correlation: jakes
+  decision_interval_s: 0.04
+  micro_steps: 20
+  residual_doppler_hz: 50.0
+args:
+  device: cpu
+  seeds:
+  - 3
+  - 6
+  - 8
+  - 9
+  - 42
+  output_root: joint_dqn_ppo_ppo
+  max_train_episodes: 16992
+  num_ground_stations: 4
+  num_gs_per_rb: 2
+  topology_profile: paper_n4
+  dqn_scheduler_impl: enumerative
+  rollout_length: 1024
+  max_steps_per_episode: 1024
+  replay_capacity: 200000
+  dqn_batch_size: 128
+  learning_starts: 128
+  dqn_update_freq: 4
+  target_update_freq: 8
+  epsilon_start: 0.05
+  epsilon_end: 0.05
+  epsilon_decay_episodes: 1000
+  lr_dqn: 0.0005
+  lr_power_ppo: 0.0003
+  lr_phase_ppo: 6.0e-05
+  ppo_power_epochs: 12
+  ppo_phase_epochs: 6
+  entropy_coef_power: 0.012
+  entropy_coef_phase: 0.006
+  gamma: 0.9
+  gae_lambda: 0.95
+  fairness_lambda: 3.0
+  fairness_beta: 0.05
+  csi_error_variance: 0.01
+  ris_reflection_power_limit_dBm: -5.0
+  active_ris_noise_power_dBm: -100.0
+  uav_rx_antenna_gain_dBi: 15.0
+  ris_elem_max_amp_gain_dB: 40.0
+  sic_detection_threshold_dBm: -94.0
+  ris_num_elem_x: 16
+  ris_num_elem_y: 16
+  include_mrt_features: true
+  phase_state_mode: all_users_no_action
+  phase_compact_include_mrt_features: true
+  phase_policy_dist: gaussian_latent
+  eval_every_episodes: 32
+  selection_every_episodes: 224
+  k_daily: 8
+  k_ready: 15
+  num_eval_seeds: 500
+  eval_seed_base: 10001
+  eval_seed_stride: 37
+  checkpoint_every_episodes: 16
+  num_threads: 1

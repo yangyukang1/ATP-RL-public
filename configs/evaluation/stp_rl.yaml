@@ -1,0 +1,11 @@
+extends: paper_all.yaml
+name: evaluate_stp_rl
+method: stp_rl
+args:
+  run_batch: false
+  baseline_list: null
+  eval_source: phase2_model_dir
+  phase2_model_dir: null
+  sweep_ris_reflection_power_limit_dBm: null
+  scheduler_mode: dqn
+  power_mode: ppo

@@ -1,0 +1,6 @@
+extends: ../base/stage2.yaml
+name: stp_rl
+method: stp_rl
+args:
+  scheduler_mode: dqn
+  power_mode: ppo

@@ -1,0 +1,15 @@
+extends: ../base/warmup.yaml
+name: periodic
+method: periodic
+entrypoint: periodic
+args:
+  exp_name: paper_periodic_l3
+  max_train_episodes: 16992
+  scheduler_mode: dqn
+  cycle_dqn_before_power: 0
+  cycle_dqn_before_phase: 0
+  phase1_only: true
+  power_mode: null
+  phase_model_state_mode: null
+  phase_model_include_mrt_features: null
+  phase_policy_dist: null

@@ -1,0 +1,72 @@
+schema_version: 1
+kind: run
+profile: paper_sac
+name: stp_sac
+method: sac_stp
+entrypoint: sac_stp
+artifacts_root: artifacts
+args:
+  stage: pipeline
+  profile: formal
+  seeds:
+  - 3
+  - 6
+  - 8
+  - 9
+  - 42
+  stage1_episodes: 1440
+  stage2_episodes: 15552
+  cycle_dqn_episodes: 6
+  cycle_power_episodes: 10
+  macro_steps_per_episode: 1024
+  num_micro_steps: 20
+  num_ground_stations: 4
+  num_gs_per_rb: 2
+  topology_profile: paper_n4
+  ris_num_elem_x: 16
+  ris_num_elem_y: 16
+  fairness_lambda: 3.0
+  num_threads: 1
+  pbt_enabled: false
+  learn_amp_weights: false
+  eval_every_episodes: 32
+  evaluation_seeds:
+  - 10001
+  - 20002
+  - 30003
+  - 40004
+  - 50005
+  - 60006
+  - 70007
+  - 80008
+  num_eval_seeds: 500
+  eval_seed_base: 10001
+  eval_seed_stride: 37
+  power_sac:
+    capacity: 100000
+    batch_size: 128
+    learning_starts: 1024
+    train_freq: 4
+    actor_lr: 0.0003
+    critic_lr: 0.0003
+    temperature_lr: 0.0003
+    gamma: 0.9
+    tau: 0.005
+    initial_temperature: 0.1
+    kappa: 1.5
+    max_grad_norm: 0.5
+  phase_sac:
+    capacity: 100000
+    batch_size: 128
+    learning_starts: 1024
+    train_freq: 4
+    actor_lr: 6.0e-05
+    critic_lr: 6.0e-05
+    temperature_lr: 6.0e-05
+    gamma: 0.9
+    tau: 0.005
+    initial_temperature: 0.1
+    kappa: 0.5
+    max_grad_norm: 0.5
+  phase_distribution: wrapped_normal_v1
+  auto_final_evaluation: true

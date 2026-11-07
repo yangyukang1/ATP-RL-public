@@ -1,0 +1,11 @@
+extends: paper_all.yaml
+name: evaluate_periodic
+method: periodic
+args:
+  run_batch: false
+  baseline_list: null
+  eval_source: periodic_phase1_model_dir
+  periodic_phase1_model_dir: null
+  sweep_ris_reflection_power_limit_dBm: null
+  scheduler_mode: dqn
+  power_mode: ppo

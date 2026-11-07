@@ -1,0 +1,56 @@
+schema_version: 1
+kind: run
+profile: paper
+name: paper_warmup
+method: atp_rl
+entrypoint: warmup
+artifacts_root: artifacts
+physics:
+  temporal_correlation: jakes
+  decision_interval_s: 0.04
+  micro_steps: 20
+  residual_doppler_hz: 50.0
+args:
+  exp_name: paper_warmup_l3
+  device: cpu
+  seed: 42
+  save_model: true
+  enable_tb: false
+  early_stop_patience_eval: 0
+  max_train_episodes: 1440
+  eval_every_episodes: 16
+  curve_k: 8
+  num_ground_stations: 4
+  num_gs_per_rb: 2
+  topology_profile: paper_n4
+  scheduler_mode: dqn
+  power_mode: ppo
+  cycle_dqn_before_power: 6
+  cycle_power: 1
+  ppo_power_opt_episodes: 10
+  dqn_batch_size: 128
+  dqn_update_freq: 4
+  target_update_freq: 8
+  lr_dqn: 0.0005
+  lr_power_ppo: 0.0003
+  ppo_power_buffer_size: 1024
+  ppo_power_epochs: 12
+  entropy_coef_power: 0.012
+  epsilon_start: 1.0
+  epsilon_end: 0.01
+  epsilon_decay_episodes: 1440
+  gamma: 0.9
+  gae_lambda: 0.95
+  fairness_lambda: 3.0
+  fairness_beta: 0.05
+  csi_error_variance: 0.01
+  ris_reflection_power_limit_dBm: -5.0
+  active_ris_noise_power_dBm: -100.0
+  uav_rx_antenna_gain_dBi: 15.0
+  ris_elem_max_amp_gain_dB: 40.0
+  ris_num_elem_x: 16
+  ris_num_elem_y: 16
+  sic_detection_threshold_dBm: -94.0
+  phase_model_state_mode: compact_selected
+  phase_model_include_mrt_features: true
+  phase_policy_dist: gaussian_latent

@@ -1,0 +1,90 @@
+schema_version: 1
+kind: run
+profile: conventional
+name: conventional
+method: rr_ao_wmmse_sdr
+entrypoint: conventional
+artifacts_root: artifacts
+boolean_optional_args:
+- rr_reset_each_episode
+- debug_inner_history
+- show_progress
+- sdr_warm_start
+args:
+  baseline_name: rr_ao_wmmse_sdr
+  phase_solver: sdr
+  ris_init: mrt
+  budget_profile: formal_candidate
+  num_ground_stations: 4
+  num_gs_per_rb: 2
+  topology_profile: paper_n4
+  rr_initial_offset: 0
+  rr_reset_each_episode: true
+  output_dir: .
+  resume_run_dir: null
+  checkpoint_every_steps: 0
+  num_eval_seeds: 500
+  eval_seed_base: 10001
+  eval_seed_stride: 37
+  evaluation_repeats: 1
+  max_steps_per_episode: 1024
+  diagnostic_sample_limit: 256
+  debug_decision_limit: 4
+  device: cpu
+  num_threads: 1
+  show_progress: true
+  fairness_lambda: 3.0
+  fairness_beta: 0.05
+  fairness_alpha: 0.0
+  fairness_epsilon: 0.01
+  csi_error_variance: 0.01
+  sic_detection_threshold_dBm: -94.0
+  sic_penalty: 0.0
+  ris_reflection_power_limit_dBm: -5.0
+  active_ris_noise_power_dBm: -100.0
+  uav_rx_antenna_gain_dBi: 15.0
+  ris_elem_max_amp_gain_dB: 40.0
+  ris_num_elem_x: 16
+  ris_num_elem_y: 16
+  min_rate_req: 0.1
+  rho: 0.95
+  force_bs_gain_db: null
+  sat_user_gain_db_offsets: null
+  lambda_boost: 0.0
+  satellite_max_power_dBm: 50.0
+  terrestrial_cell_power_dBm: 35.0
+  noise_power_dBm: -114.0
+  num_micro_steps: 20
+  decision_interval_s: 0.04
+  residual_doppler_hz: 50.0
+  ao_max_iters: 3
+  ao_tol: 1.0e-05
+  wmmse_max_iters: 3
+  wmmse_tol: 1.0e-06
+  wmmse_scipy_maxiter: 200
+  wmmse_scipy_ftol: 1.0e-08
+  sca_max_iters: 3
+  sca_tol: 1.0e-06
+  sca_phase_tol: 0.001
+  sca_trust_radius: 0.5
+  sca_scipy_maxiter: 200
+  sca_scipy_ftol: 1.0e-08
+  phase1_max_iters: 8
+  sic_guard: 1.0e-06
+  feasibility_tol: 1.0e-07
+  stopping_patience: 2
+  decision_time_limit_s: null
+  debug_inner_history: false
+  debug_history_limit: 64
+  sdr_solver: SCS
+  sdr_max_iters: 1
+  sdr_tol: 1.0e-06
+  sdr_phase_tol: 0.001
+  sdr_rank_tol: 1.0e-05
+  sdr_rank_penalty_init: 1.0
+  sdr_rank_penalty_growth: 10.0
+  sdr_rank_penalty_max: 100.0
+  sdr_scs_max_iters: 10000
+  sdr_scs_eps_abs: 1.0e-10
+  sdr_scs_eps_rel: 1.0e-10
+  sdr_warm_start: true

@@ -1,0 +1,13 @@
+extends: ../base/warmup.yaml
+name: no_ris
+method: no_ris
+entrypoint: warmup
+args:
+  exp_name: paper_no_ris_l3
+  max_train_episodes: 16992
+  disable_ris_path: true
+
+  eval_every_episodes: 32
+  curve_k: 8
+  phase1_only: true
+  checkpoint_every_episodes: 16

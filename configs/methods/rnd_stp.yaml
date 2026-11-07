@@ -1,0 +1,5 @@
+extends: stp_rl.yaml
+name: rnd_stp
+method: rnd_stp
+args:
+  scheduler_mode: random

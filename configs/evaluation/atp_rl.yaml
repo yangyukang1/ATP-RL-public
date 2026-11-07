@@ -1,0 +1,11 @@
+extends: paper_all.yaml
+name: evaluate_atp_rl
+method: atp_rl
+args:
+  run_batch: false
+  baseline_list: null
+  eval_source: pbt_best
+  pbt_run_dir: null
+  sweep_ris_reflection_power_limit_dBm: null
+  scheduler_mode: dqn
+  power_mode: ppo

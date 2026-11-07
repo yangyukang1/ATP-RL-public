@@ -1,0 +1,5 @@
+extends: ../methods/stp_sac.yaml
+name: evaluate_stp_sac
+args:
+  stage: evaluate
+  checkpoint: null
